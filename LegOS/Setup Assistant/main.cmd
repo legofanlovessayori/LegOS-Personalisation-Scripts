@@ -18,15 +18,15 @@ exit /B
 :gotAdmin
     pushd "%CD%"
     CD /D "%~dp0"
-title LegoOS 10 Setup Assistant
+title LegOS Setup Assistant
 
 ::OOBE Step 1 Code...
 :step1
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo Thanks for choosing LegoOS 10! This Setup Assistant configures
-echo LegoOS 10 for your usage / liking.
+echo LegOS for your usage / liking.
 echo.
 echo Press [1] to continue.
 echo Press [2] to reboot.
@@ -42,9 +42,9 @@ if /I "%oobestep1%" EQU "2" goto :exit
 cls
 title Choose your look!
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
-echo How do you want LegoOS 10 to look?
+echo How do you want LegOS to look?
 echo.
 echo Press [1] for normal Windows 10 Look.
 ::echo Press [2] for Windows Vista'ish Look. (in development)
@@ -92,7 +92,7 @@ goto :step3
 cls
 title Choose optional components
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo What optional components do you want installed?
 echo.
@@ -117,7 +117,7 @@ if /I "%oobestep3%" EQU "6" goto :misc
 cls
 title Choose optional components - Category (Browsers)
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo Choose what browser you want installed!
 echo.
@@ -161,7 +161,7 @@ goto step3
 cls
 title Choose optional components - Error
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo Critical Error!
 echo.
@@ -182,7 +182,7 @@ if /I "%operagxisass%" equ "2" goto :installvivaldi
 cls
 title Choose optional components - Error
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo Critical Error!
 echo.
@@ -199,7 +199,7 @@ goto step3
 cls
 title Choose optional components - Error
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo Critical Error!
 echo.
@@ -220,7 +220,7 @@ if /I "%chromeisass%" equ "1" goto :browsers
 cls
 title Choose optional components - Category (FTP / SSH Tools)
 echo --------------------------------------------------------------
-echo LegoOS 10 Setup Assistant
+echo LegOS Setup Assistant
 echo.
 echo Choose what ftp / ssh tools you want installed!
 echo.
@@ -263,7 +263,7 @@ start FileZilla_3.56.2_win64-setup.exe
 ::OOBE Reboot Code... just in case someone thinks that rebooting is smart (currently buggy thats why commented out)
 ::exit
 ::echo --------------------------------------------------------------
-::echo LegoOS 10 Setup Assistant
+::echo LegOS Setup Assistant
 ::echo.
 ::echo Are you sure to restart the PC?
 ::echo.
