@@ -19,14 +19,14 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 
-title LegoOS 10 Branding Replacement Utility
+title LegOS 10 Branding Replacement Utility
 :main
 cls
 echo --------------------------------------------------------------
-echo LegoOS 10 Branding Replacement Utility
+echo LegOS Branding Replacement Utility
 echo.
 echo This Batch Script will allow you to change the Branding of
-echo LegoOS 10 with ease.
+echo LegOS with ease.
 echo [0] Replaces branding with the stock 10 Branding.
 echo [1] Replaces Branding with the universial Branding.
 echo [2] Add Version Specific Branding.
@@ -62,7 +62,7 @@ goto :main
 :exit
 cls
 echo --------------------------------------------------------------
-echo LegoOS 10 Branding Replacement Utility
+echo LegOS Branding Replacement Utility
 echo.
 echo.
 echo Exiting...
@@ -75,10 +75,10 @@ exit
 :specificbranding
 cls
 echo --------------------------------------------------------------
-echo LegoOS 10 Branding Replacement Utility
+echo LegOS Branding Replacement Utility
 echo.
 echo Here you can add Version Specific Branding from the following
-echo Editions of LegoOS 10: (Barebones, Standard and Coding Edition)
+echo Editions of LegOS: (Barebones, Standard and Coding Edition)
 echo.
 echo [0] Standard
 echo [1] Barebones
