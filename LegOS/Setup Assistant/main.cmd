@@ -25,22 +25,22 @@ title LegOS Setup Assistant
 echo --------------------------------------------------------------
 echo LegOS Setup Assistant
 echo.
-echo Thanks for choosing LegoOS 10! This Setup Assistant configures
+echo Thanks for choosing LegOS! This Setup Assistant configures
 echo LegOS for your usage / liking.
 echo.
 echo Press [1] to continue.
-echo Press [2] to reboot.
+::echo Press [2] to reboot.
 echo --------------------------------------------------------------
 
 set /p oobestep1= Type your value here:
 
 if /I "%oobestep1%" EQU "1" goto :step2
-if /I "%oobestep1%" EQU "2" goto :exit
+::if /I "%oobestep1%" EQU "2" goto :exit
 
 :: OOBE Step 2... (Choose your look)
 :step2
 cls
-title Choose your look!
+title LegOS Setup Assistant - Choose your look!
 echo --------------------------------------------------------------
 echo LegOS Setup Assistant
 echo.
@@ -58,24 +58,24 @@ if /I "%oobestep2%" EQU "1" goto :step3
 if /I "%oobestep2%" EQU "2" goto :cairo
 
 :cairo
-title Downloading Cairo Shell...
+title Choose your look! - Downloading Cairo Shell
 aria2c https://github.com/cairoshell/cairoshell/releases/download/v0.4.133/CairoSetup_64bit.exe
 timeout /t 5 /nobreak
-title Installing Cairo Shell.... (User Interaction required)
+title Choose your look! - Installing Cairo Shell
 start CairoSetup_64bit.exe
-goto :step3
+goto :waitingstep2
 
 ::vista (in development)
-::title Configuring Vista'ish Desktop....
+::title Choose your look! - Configuring Vista'ish Desktop
 ::insert registy commands here
-::title Downloading 8GadgetPack
+::title Choose your look! - Downloading 8GadgetPack
 ::aria2c https://8gadgetpack.net/dl_340/8GadgetPackSetup.msi
 ::timeout /t 5 /nobreak
-::title Installing 8gadgetpack.... (User Interaction required)
+::title Choose your look! - Installing 8GadgetPack
 ::pause
 ::start 8GadgetPackSetup.msi
 ::pause
-::title Trashing Extra Gadgets....
+::title Choose your look! - Trashing Extra Gadgets
 ::taskkill /f /im sidebar.exe
 ::copy "%userprofile%\AppData\Local\Microsoft\Windows Sidebar\Gadgets\notes.gadget" "C:\program files (x86)\windows sidebar\gadgets"
 ::copy "%userprofile%\AppData\Local\Microsoft\Windows Sidebar\Gadgets\sidebar7.gadget" "C:\program files (x86)\windows sidebar\gadgets"
@@ -85,12 +85,12 @@ goto :step3
 ::del %userprofile%\appdata\local\clipboarder /s /q
 ::del "%userprofile%\AppData\Local\Microsoft\Windows Sidebar\Gadgets" /s /q
 ::del "%userprofile%\AppData\Local\Microsoft\Windows Sidebar\settings.ini" /s /q
-::goto :step3
+::goto :waiting
 
 ::OOBE Step 3 code...
 :step3
 cls
-title Choose optional components
+title LegOS Setup Assistant - Choose optional components
 echo --------------------------------------------------------------
 echo LegOS Setup Assistant
 echo.
@@ -98,9 +98,10 @@ echo What optional components do you want installed?
 echo.
 echo Pick a Category.
 echo.
-echo [1] Browsers		 [4] Multimedia
+echo [1] Browsers        [4] Multimedia
 echo [2] FTP / SSH Tools [5] OS Management
-echo [3] Office			 [6] Misc 
+echo [3] Office          [6] Misc
+echo [7] I chose all components that i want.
 echo --------------------------------------------------------------
 
 set /p oobestep3= Type your value here:
@@ -111,6 +112,8 @@ if /I "%oobestep3%" EQU "3" goto :office
 if /I "%oobestep3%" EQU "4" goto :media
 if /I "%oobestep3%" EQU "5" goto :os
 if /I "%oobestep3%" EQU "6" goto :misc
+if /i "%oobestep3%" equ "7" goto :step4
+
 
 ::Browsers Optional feature...
 :browsers
@@ -123,9 +126,9 @@ echo Choose what browser you want installed!
 echo.
 echo.
 echo.
-echo [1] Ungoogled Chromium	[4] Opera
-echo [2] Firefox			[5] Opera GX
-echo [3] Brave			 	[6] Chrome 
+echo [1] Ungoogled Chromium [4] Opera
+echo [2] Firefox            [5] Opera GX
+echo [3] Brave              [6] Chrome 
 echo --------------------------------------------------------------
 
 set /p optional1= Type your value here:
@@ -143,19 +146,19 @@ if /I "%optional1%" EQU "6" goto :lettertogoogletofixtheirbrowser
 title Choose optional components - Installing Ungoogled Chromium
 aria2c https://github.com/Nifury/ungoogled-chromium-binaries/releases/download/95.0.4638.69-1/ungoogled-chromium_95.0.4638.69-1.1_installer.exe
 start ungoogled-chromium_95.0.4638.69-1.1_installer.exe
-goto step3
+goto waiting
 
 :installfirefox
 title Choose optional components - Installing Firefox
 aria2c https://download.mozilla.org/?product=firefox-stub&os=win&lang=en
 start Firefox Installer.exe
-goto step3
+goto waiting
 
 :installbrave
 title Choose optional components - Installing Brave
 aria2c https://laptop-updates.brave.com/latest/winx64
 start BraveBrowserSetup.exe
-goto step3
+goto waiting
 
 :spyware
 cls
@@ -193,7 +196,7 @@ echo --------------------------------------------------------------
 title Choose optional components - Installing Vivaldi
 aria2c https://downloads.vivaldi.com/stable/Vivaldi.4.3.2439.65.x64.exe
 start Vivaldi.4.3.2439.65.x64.exe
-goto step3
+goto waiting
 
 :lettertogoogletofixtheirbrowser
 cls
@@ -223,7 +226,7 @@ echo --------------------------------------------------------------
 echo LegOS Setup Assistant
 echo.
 echo Choose what ftp / ssh tools you want installed!
-echo.
+echo Are probably gonna be handy for connecting to Linux VM.
 echo.
 echo.
 echo [1] PuTTY				
@@ -247,11 +250,14 @@ goto :ftp
 title Choose optional components - Installing WinSCP
 aria2c https://winscp.net/download/files/20211124194197522c5872b63ccf3df5ceabda8b343e/WinSCP-5.19.4-Setup.exe
 start WinSCP-5.19.4-Setup.exe
-goto step3
+goto waiting
+
 :installfilezilla
 title Choose optional components - Installing FileZilla
 aria2c https://dl1.cdn.filezilla-project.org/client/FileZilla_3.56.2_win64-setup.exe?h=JI3Pn78mBvDYCx_LMNCiEQ&x=1637784606
 start FileZilla_3.56.2_win64-setup.exe
+goto waiting
+
 :office
 
 :media
@@ -259,6 +265,34 @@ start FileZilla_3.56.2_win64-setup.exe
 :os
 
 :misc
+
+::hmmyes waiting screen...
+:waitingstep2
+cls
+title LegOS Setup Assistant - Waiting....
+echo --------------------------------------------------------------
+echo LegOS Setup Assistant
+echo.
+echo Please wait while Setup is configuring the chosen Components.
+echo.
+echo.	 	
+echo --------------------------------------------------------------
+pause
+goto step3
+
+:waiting
+cls
+title LegOS Setup Assistant - Waiting....
+echo --------------------------------------------------------------
+echo LegOS Setup Assistant
+echo.
+echo Please wait while Setup is configuring the chosen Components.
+echo.
+echo.	 	
+echo --------------------------------------------------------------
+pause
+goto step4
+
 
 ::OOBE Reboot Code... just in case someone thinks that rebooting is smart (currently buggy thats why commented out)
 ::exit
@@ -279,6 +313,6 @@ start FileZilla_3.56.2_win64-setup.exe
 ::reboot
 ::title Setup is restarting your PC..
 ::cls
-::reg import %windir%\scriptsworkingdirectory\setup\registry\error.reg /reg:32
+::insert reg cmd here
 ::shutdown /r /t 3
 ::exit
